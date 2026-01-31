@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Forge | Your Field Our Forge</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #2563B8 0%, #3B82F6 50%, #2563B8 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800"><defs><filter id="blur"><feGaussianBlur stdDeviation="30"/></filter></defs><rect width="1000" height="800" fill="%232563B8"/><ellipse cx="800" cy="400" rx="400" ry="300" fill="%233B82F6" opacity="0.3" filter="url(%23blur)"/><path d="M 100 600 Q 300 550 500 600 T 900 600" stroke="%23ffffff" stroke-width="2" fill="none" opacity="0.1"/></svg>') center/cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 2rem;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .avant-logo {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background: white;
+            padding: 0.8rem 2rem;
+            border-radius: 10px;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #2563B8;
+            letter-spacing: 3px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-icon {
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-icon svg {
+            width: 120px;
+            height: 120px;
+            fill: white;
+        }
+
+        .logo {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            letter-spacing: 8px;
+            color: #FF6B35;
+            text-transform: uppercase;
+            animation: fadeInDown 1s ease 0.2s both;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+
+        .tagline {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: white;
+            font-weight: 300;
+            letter-spacing: 6px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .subtitle {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #FF6B35;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .subtitle-small {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease 0.7s both;
+        }
+
+        .hero-image-container {
+            max-width: 900px;
+            margin: 2rem auto 3rem;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 1s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: #e94560;
+            color: white;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: #d63651;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #1a1a2e;
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-dark {
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1a1a2e;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #e94560;
+            border-radius: 2px;
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .model-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .model-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-color: #e94560;
+        }
+
+        .model-name {
+            font-size: 2rem;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .model-tag {
+            display: inline-block;
+            background: #e94560;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .features-list li {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            color: #e94560;
+            font-weight: bold;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-title {
+            font-size: 1.3rem;
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .application-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .application-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .application-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+
+        .contact-item a {
+            color: #e94560;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #ff6b81;
+        }
+
+        .footer {
+            background: #0a0a0a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 2rem auto;
+            background: rgba(255,255,255,0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #e94560;
+            background: rgba(255,255,255,0.15);
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group select option {
+            background: #1a1a2e;
+            color: white;
+        }
+
+        .form-message {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .form-message.success {
+            background: rgba(40, 167, 69, 0.3);
+            border: 2px solid #28a745;
+            color: #28a745;
+            display: block;
+        }
+
+        .form-message.error {
+            background: rgba(220, 53, 69, 0.3);
+            border: 2px solid #dc3545;
+            color: #dc3545;
+            display: block;
+        }
+
+        .spec-table {
+            width: 100%;
+            margin-top: 2rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .spec-table th {
+            background: #1a1a2e;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .spec-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .spec-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .check {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .cross {
+            color: #dc3545;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.8rem;
+                letter-spacing: 4px;
+            }
+            
+            .tagline {
+                font-size: 1.3rem;
+                letter-spacing: 3px;
+            }
+            
+            .subtitle {
+                font-size: 1.5rem;
+                letter-spacing: 2px;
+            }
+
+            .subtitle-small {
+                font-size: 1rem;
+                letter-spacing: 4px;
+            }
+
+            .avant-logo {
+                font-size: 1.5rem;
+                padding: 0.6rem 1.5rem;
+                top: 1rem;
+                left: 1rem;
+            }
+
+            .hero-icon svg {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .models-grid, .applications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="avant-logo">AVANT</div>
+        <div class="hero-content">
+            <div class="hero-icon">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="40" y="80" width="50" height="80" fill="white" opacity="0.9"/>
+                    <rect x="50" y="90" width="10" height="20"/>
+                    <rect x="70" y="90" width="10" height="20"/>
+                    <rect x="50" y="120" width="10" height="20"/>
+                    <rect x="70" y="120" width="10" height="20"/>
+                    <path d="M 40 80 L 65 50 L 90 80 Z" fill="white" opacity="0.9"/>
+                    <path d="M 100 140 Q 120 120 140 140 T 180 140" stroke="white" stroke-width="4" fill="none" opacity="0.8"/>
+                    <circle cx="125" cy="125" r="8" fill="white"/>
+                    <circle cx="155" cy="125" r="8" fill="white"/>
+                    <line x1="65" y1="80" x2="65" y2="50" stroke="white" stroke-width="3"/>
+                </svg>
+            </div>
+            <div class="logo">FIELD FORGE</div>
+            <div class="tagline">Your Field Our Forge</div>
+            <div class="subtitle">RUGGED FABRICATION HOUSE</div>
+            <div class="subtitle-small">MOBILE FABRICATION UNIT</div>
+            <div class="hero-image-container">
+                <img src="https://raw.githubusercontent.com/anthropics/anthropic-quickstarts/main/customer-support-agent/files/fieldforge-hero.jpg" alt="Field Forge Mobile Fabrication Unit" class="hero-image">
+            </div>
+            <div class="cta-buttons">
+                <a href="#models" class="btn btn-primary">Explore Models</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="models">
+        <div class="container">
+            <h2 class="section-title">Our Models</h2>
+            <div class="models-grid">
+                <div class="model-card">
+                    <h3 class="model-name">FF N100</h3>
+                    <span class="model-tag">Standard Configuration</span>
+                    <p>The essential mobile fabrication solution designed for versatility and reliability in field operations.</p>
+                    <ul class="features-list">
+                        <li>High-Capacity Air Compressor (1-10 Bar)</li>
+                        <li>ARC Welding Machine (2 Sets × 400A)</li>
+                        <li>MIG Welding Machine (1 Set × 400A)</li>
+                        <li>Plasma Cutting (Up to 12mm)</li>
+                        <li>Complete Pneumatic Support System</li>
+                        <li>Professional Painting Gun (500ml)</li>
+                        <li>Full Range of Drilling & Grinding Tools</li>
+                    </ul>
+                </div>
+
+                <div class="model-card">
+                    <h3 class="model-name">FF P100</h3>
+                    <span class="model-tag">Premium Configuration</span>
+                    <p>The ultimate autonomous mobile fabrication unit with independent power and 24/7 operational capability.</p>
+                    <ul class="features-list">
+                        <li>All FF N100 Features</li>
+                        <li>Single Phase Welding (1 Set × 200A)</li>
+                        <li>Gas Cutting with O₂ & LPG Support</li>
+                        <li>Onboard Cummins 20 KVA Diesel Genset</li>
+                        <li>High-Intensity Focus Light Tower (3M Height)</li>
+                        <li>Heavy-Duty Access Ladder (20 Feet)</li>
+                        <li>Night & Emergency Operation Capable</li>
+                        <li>Fully Autonomous Field Operation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <table class="spec-table">
+                <thead>
+                    <tr>
+                        <th>Integrated Systems Specification</th>
+                        <th>FF N100</th>
+                        <th>FF P100</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>High-Capacity Air Compressor (1–10 Bar)</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>ARC Welding Machine (2 Sets × 400 Amps)</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>MIG Welding Machine (1 Set × 400 Amps)</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Single Phase Welding Machine (1 Set × 200 Amps)</td>
+                        <td class="cross">-</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Plasma Cutting (Up to 12mm)</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Pneumatic Support (Hoses, Gate Valves)</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Painting Gun (500ml min)</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Mini Drilling Machine (Up to 14mm, 250W)</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Hand Drilling Machine (600W)</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Angle Grinder AG7 (2200W)</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Angle Grinder AG4 (600W)</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Gas Cutting (Single Torch)</td>
+                        <td class="cross">-</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Gas Cylinders (O₂ & LPG Support)</td>
+                        <td class="cross">-</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Onboard Diesel Genset (Cummins 20 KVA)</td>
+                        <td class="cross">-</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>High-Intensity Focus Light Tower (3M Height)</td>
+                        <td class="cross">-</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Heavy-Duty Access Ladder (20 Feet Max)</td>
+                        <td class="cross">-</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Night & Emergency Operation Capability</td>
+                        <td class="cross">-</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Fully Autonomous Field Operation</td>
+                        <td class="cross">-</td>
+                        <td class="check">✔</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Key Benefits</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔧</div>
+                    <h3 class="benefit-title">Complete On-Site Capability</h3>
+                    <p>Full fabrication and maintenance services delivered directly to your location</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3 class="benefit-title">Optimized Operations</h3>
+                    <p>Maximizes operational continuity and service responsiveness</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌙</div>
+                    <h3 class="benefit-title">24/7 Availability</h3>
+                    <p>Ideal for remote, emergency and night-time operations</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3 class="benefit-title">Multitasking Platform</h3>
+                    <p>Complete utility platform consolidated in a single mobile unit</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💪</div>
+                    <h3 class="benefit-title">Rugged & Reliable</h3>
+                    <p>Engineered to work in harsh and challenging field conditions</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚚</div>
+                    <h3 class="benefit-title">Compact Mobility</h3>
+                    <p>Designed for easy transport and deployment anywhere</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔗</div>
+                    <h3 class="benefit-title">Integrated Systems</h3>
+                    <p>Fully integrated service systems for seamless operation</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">👤</div>
+                    <h3 class="benefit-title">User-Friendly</h3>
+                    <p>Intuitive layout and design for efficient workflow</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🛡️</div>
+                    <h3 class="benefit-title">Advanced Safety</h3>
+                    <p>Built-in safety systems for secure operations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Applications</h2>
+            <div class="applications-grid">
+                <div class="application-item">
+                    <h3>🏗️ Construction & Infrastructure</h3>
+                    <p>On-site fabrication for building and infrastructure projects</p>
+                </div>
+                <div class="application-item">
+                    <h3>⛏️ Mining & Quarry Operations</h3>
+                    <p>Heavy-duty repairs and maintenance in remote locations</p>
+                </div>
+                <div class="application-item">
+                    <h3>🚜 Fleet & Equipment Maintenance</h3>
+                    <p>Mobile servicing for heavy machinery and vehicle fleets</p>
+                </div>
+                <div class="application-item">
+                    <h3>🏭 Industrial Shutdowns</h3>
+                    <p>Rapid response for turnarounds and planned maintenance</p>
+                </div>
+                <div class="application-item">
+                    <h3>🚨 Emergency Services</h3>
+                    <p>Breakdown response and urgent repair capabilities</p>
+                </div>
+                <div class="application-item">
+                    <h3>🌃 Night-Time Operations</h3>
+                    <p>24/7 field operations with independent power and lighting</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Field Forge in Action</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem; color: #555;">
+                See how Field Forge delivers complete fabrication capabilities directly to industrial sites, power plants, refineries, and shipyards worldwide.
+            </p>
+            <div class="gallery-grid">
+                <img src="https://raw.githubusercontent.com/anthropics/anthropic-quickstarts/main/customer-support-agent/files/forge1.jpg" alt="Field Forge mobile fabrication unit at power plant with welding operations" class="gallery-img">
+                <img src="https://raw.githubusercontent.com/anthropics/anthropic-quickstarts/main/customer-support-agent/files/forge2.jpg" alt="Industrial welding and cutting operations at refinery site" class="gallery-img">
+                <img src="https://raw.githubusercontent.com/anthropics/anthropic-quickstarts/main/customer-support-agent/files/forge3.jpg" alt="Field Forge team working at industrial facility" class="gallery-img">
+                <img src="https://raw.githubusercontent.com/anthropics/anthropic-quickstarts/main/customer-support-agent/files/forge4.jpg" alt="Mobile fabrication unit at electrical substation" class="gallery-img">
+                <img src="https://raw.githubusercontent.com/anthropics/anthropic-quickstarts/main/customer-support-agent/files/forge5.jpg" alt="Field Forge in shipyard environment with cranes" class="gallery-img">
+            </div>
+        </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Request Pricing Information</h2>
+            <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem;">Ready to bring industrial-grade fabrication to your field? Our sales team will provide a customized quote.</p>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company Name *</label>
+                        <input type="text" id="company" name="company" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="model">Interested Model *</label>
+                    <select id="model" name="model" required>
+                        <option value="">Select a model</option>
+                        <option value="FF N100">FF N100 - Standard Configuration</option>
+                        <option value="FF P100">FF P100 - Premium Configuration</option>
+                        <option value="Both">Both Models</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="application">Primary Application</label>
+                    <input type="text" id="application" name="application" placeholder="e.g., Mining, Construction, Power Plant Maintenance">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Additional Details</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Tell us about your project requirements, timeline, or any specific questions..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; max-width: 300px; margin: 1rem auto; display: block;">
+                    Submit Inquiry
+                </button>
+                
+                <div id="formMessage" class="form-message"></div>
+            </form>
+            
+            <div class="contact-info" style="margin-top: 3rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.2);">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Or Contact Us Directly</h3>
+                <div class="contact-item">
+                    <strong>Avant Steelfab Private Limited</strong>
+                </div>
+                <div class="contact-item">
+                    📍 #98, Colour Bus Stop, Chennimalai Road<br>
+                    Kavundichipalayam (Post), Erode, Tamil Nadu - 638112
+                </div>
+                <div class="contact-item">
+                    📞 <a href="tel:+917305035001">+91 730 503 5001</a>
+                </div>
+                <div class="contact-item">
+                    ✉️ <a href="mailto:admin@avantsteelfab.in">admin@avantsteelfab.in</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 Avant Steelfab Private Limited. All rights reserved.</p>
+        <p>Field Forge - Your Field Our Forge</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.benefit-card, .application-item, .model-card, .gallery-img').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission (replace with actual API call)
+            const messageDiv = document.getElementById('formMessage');
+            messageDiv.className = 'form-message success';
+            messageDiv.textContent = 'Thank you for your inquiry! Our sales team will contact you within 24 hours.';
+            
+            // Reset form
+            this.reset();
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+            
+            // In production, replace the above with actual form submission:
+            /*
+            fetch('YOUR_API_ENDPOINT', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                messageDiv.className = 'form-message success';
+                messageDiv.textContent = 'Thank you for your inquiry! Our sales team will contact you within 24 hours.';
+                this.reset();
+            })
+            .catch(error => {
+                messageDiv.className = 'form-message error';
+                messageDiv.textContent = 'There was an error submitting your inquiry. Please try again or contact us directly.';
+            });
+            */
+        });
+
+        // Gallery image click handler for fullscreen view
+        document.querySelectorAll('.gallery-img').forEach(img => {
+            img.addEventListener('click', function() {
+                const modal = document.createElement('div');
+                modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);display:flex;align-items:center;justify-content:center;z-index:10000;cursor:pointer;';
+                
+                const modalImg = document.createElement('img');
+                modalImg.src = this.src;
+                modalImg.style.cssText = 'max-width:90%;max-height:90%;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.5);';
+                
+                modal.appendChild(modalImg);
+                document.body.appendChild(modal);
+                
+                modal.addEventListener('click', () => {
+                    document.body.removeChild(modal);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
