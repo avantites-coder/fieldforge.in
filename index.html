@@ -49,22 +49,26 @@
             position: absolute;
             top: 2rem;
             left: 2rem;
+            /* background: white; */
             padding: 0.8rem 2rem;
             border-radius: 10px;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #2563B8;
+            letter-spacing: 3px;
+            animation: fadeInDown 1s ease;
         }
 
         .hero-icon {
             margin-bottom: 1rem;
             animation: fadeInDown 1s ease;
-            width : 100%;
-            height : auto;
         }
-
+/* 
         .hero-icon svg {
             width: 120px;
             height: 120px;
             fill: white;
-        }
+        } */
 
         .logo {
             font-size: 5rem;
@@ -80,7 +84,7 @@
         .tagline {
             font-size: 2rem;
             margin-bottom: 3rem;
-            color: white;
+            color: rgb(8, 61, 175);
             font-weight: 500;
             letter-spacing: 6px;
             animation: fadeInUp 1s ease 0.4s both;
@@ -136,7 +140,7 @@
             display: inline-block;
             font-weight: 600;
         }
-        .popup{
+        /* .popup{
             width:400px;
             background: #fff;
             border-radius: 6px;
@@ -150,7 +154,7 @@
             visibility:hidden;
             transition:transform 0.45s, top 0.4s;
         }
-            .open-popup{
+        .open-popup{
             visibility:visible;
             top:50%;
             transform:translate(-50%,-50%) scale(1);
@@ -178,7 +182,7 @@
             border-radius: 5px;
             cursor: pointer;
             box-shadow: 0 5px 5px rgba(0,0,0,0.2);
-         }
+         } */
         .btn-primary {
             background: #e94560;
             color: white;
@@ -190,8 +194,8 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6);
         }
-
-        .btn-secondary {
+       
+        /* .btn-secondary {
             background: transparent;
             color: white;
             border: 2px solid white;
@@ -202,6 +206,8 @@
             color: #1a1a2e;
             transform: translateY(-3px);
         }
+        
+         */
 
         @keyframes fadeInDown {
             from {
@@ -388,6 +394,7 @@
 
         .contact-info {
             margin-top: 2rem;
+            text-align: center;
         }
 
         .contact-item {
@@ -607,13 +614,13 @@
 </head>
 <body>
     <section class="hero">
-        <div class="avant-logo"><img src="assets/Avant_logo.png"alt="AVANT" width="60%"height="60"></div>
+        <div class="avant-logo"><img src="assets/Avant_logo.png"alt="AVANT" width="200"height="80"></div>
         <div class="hero-content">
             <div class="hero-icon">
-                <img src="assets/Field_Forge_Logo.png"alt="fieldforge" width="300" height="100%">
+                <!-- <img src="assets/ff_logo.png"alt="logo" width="120" height="100"> -->
             </div>
-            <!-- <div class="logo">FIELD FORGE</div>
-            <div class="tagline">Your Field Our Forge</div> -->
+            <div class="logo">FIELD FORGE</div>
+            <div class="tagline">Your Field Our Forge</div>
             <div class="subtitle">RUGGED FABRICATION HOUSE</div>
             <div class="subtitle-small">MOBILE FABRICATION UNIT</div>
             <div class="hero-image-container">
@@ -621,7 +628,7 @@
             </div>
             <div class="cta-buttons">
                 <a href="#models" class="btn btn-primary">Explore Models</a>
-                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                <!-- <a href="#contact" class="btn btn-secondary">Get in Touch</a> -->
             </div>
         </div>
     </section>
@@ -863,11 +870,13 @@
                 <img src="assets/ff-heavyindustry.png" alt="Field Forge team working at industrial facility" class="gallery-img">
                 <img src="assets/ff-substation.png" alt="Mobile fabrication unit at electrical substation" class="gallery-img">
                 <img src="assets/ff-ship.png" alt="Field Forge in shipyard environment with cranes" class="gallery-img">
+                <img src="assets/ff-warzone.png" alt="Field Upgrades (often referred to as field gear or equipment found in the field)" class="gallery-img">
+            </div>
             </div>
         </div>
     </section>
 
-    <section class="section contact-section" id="contact">
+    <!-- <section class="section contact-section" id="contact">
         <div class="container">
             <h2 class="section-title" style="color: white;">Request Pricing Information</h2>
             <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem;">Ready to bring industrial-grade fabrication to your field? Our sales team will provide a customized quote.</p>
@@ -924,8 +933,8 @@
                     <p>Your details has been successfully submitted.Thanks!</p>
                     <button type="button" onclick="closePopup()">OK</button>
                     </div>
-                </div>
-                <script>
+                </div> -->
+                <!-- <script>
                     let popup=document.getElementById("popup");
                     function openPopup(){
                         popup.classList.add("open-popup");
@@ -933,14 +942,54 @@
                     function closePopup(){
                         popup.classList.remove("open-popup");
                     }
-                </script>
+                </script> -->
+                <!-- <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {e.preventDefault();
+
+    let name = document.getElementById(" name").value;
+    let company = document.getElementById("company").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+    let model = document.getElementById("model").value;
+    let application = document.getElementById(" application").value;
+    let details = document.getElementById("details").value;
+
+    let companyEmail ="admin@avantsteelfab.in"; 
+
+    let subject = " Pricing Inquiry";
+    let body =
+        `Full Name: ${name}%0D%0A` +
+        `Company: ${company}%0D%0A` +
+        `Email: ${email}%0D%0A` +
+        `Phone: ${phone}%0D%0A` +
+        `Interested Model: ${model}%0D%0A` +
+        `Application: ${application}%0D%0A` +
+        `Additional Details: ${details}`;
+    window.location.href = `mailto:${companyEmail}?subject=${subject}&body=${body}`;
+    document.getElementById("contact-form").style.display = "flex";
+    document.getElementById("popup").reset();
+}); -->
+<!-- 
+// function closePopup() {
+//     document.getElementById("popup").style.display = "none";
+// }
+    let popup=document.getElementById("popup");
+                    function openPopup(){
+                        popup.classList.add("open-popup");
+                    }
+                    function closePopup(){
+                        popup.classList.remove("open-popup");
+                    } -->
+    <!-- </script> -->
 
                 
-                <div id="formMessage" class="form-message"></div>
-            </form>
+
+                
+                <!-- <div id="formMessage" class="form-message"></div>
+            </form> -->
             
             <div class="contact-info" style="margin-top: 3rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.2);">
-                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Or Contact Us Directly</h3>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Contact Us Directly</h3>
                 <div class="contact-item">
                     <strong>Avant Steelfab Private Limited</strong>
                 </div>

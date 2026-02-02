@@ -49,26 +49,22 @@
             position: absolute;
             top: 2rem;
             left: 2rem;
-            /* background: white; */
             padding: 0.8rem 2rem;
             border-radius: 10px;
-            font-size: 2rem;
-            font-weight: 900;
-            color: #2563B8;
-            letter-spacing: 3px;
-            animation: fadeInDown 1s ease;
         }
 
         .hero-icon {
             margin-bottom: 1rem;
             animation: fadeInDown 1s ease;
+            width : 100%;
+            height : auto;
         }
-/* 
+
         .hero-icon svg {
             width: 120px;
             height: 120px;
             fill: white;
-        } */
+        }
 
         .logo {
             font-size: 5rem;
@@ -154,7 +150,7 @@
             visibility:hidden;
             transition:transform 0.45s, top 0.4s;
         }
-        .open-popup{
+            .open-popup{
             visibility:visible;
             top:50%;
             transform:translate(-50%,-50%) scale(1);
@@ -194,7 +190,7 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6);
         }
-       
+
         .btn-secondary {
             background: transparent;
             color: white;
@@ -206,8 +202,6 @@
             color: #1a1a2e;
             transform: translateY(-3px);
         }
-        
-        
 
         @keyframes fadeInDown {
             from {
@@ -613,13 +607,13 @@
 </head>
 <body>
     <section class="hero">
-        <div class="avant-logo"><img src="assets/Avant_logo.png"alt="AVANT" width="200"height="80"></div>
+        <div class="avant-logo"><img src="assets/Avant_logo.png"alt="AVANT" width="60%"height="60"></div>
         <div class="hero-content">
             <div class="hero-icon">
-                <!-- <img src="assets/ff_logo.png"alt="logo" width="100" height="100"> -->
+                <img src="assets/Field_Forge_Logo.png"alt="fieldforge" width="300" height="100%">
             </div>
-            <div class="logo">FIELD FORGE</div>
-            <div class="tagline">Your Field Our Forge</div>
+            <!-- <div class="logo">FIELD FORGE</div>
+            <div class="tagline">Your Field Our Forge</div> -->
             <div class="subtitle">RUGGED FABRICATION HOUSE</div>
             <div class="subtitle-small">MOBILE FABRICATION UNIT</div>
             <div class="hero-image-container">
@@ -877,7 +871,7 @@
         <div class="container">
             <h2 class="section-title" style="color: white;">Request Pricing Information</h2>
             <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem;">Ready to bring industrial-grade fabrication to your field? Our sales team will provide a customized quote.</p>
-            <input type="hidden" name="access_key" value="607fd55d-4816-4045-a9d5-62bf553425c5">
+            
             <form class="contact-form" id="contactForm">
                 <div class="form-row">
                     <div class="form-group">
@@ -924,14 +918,14 @@
                 <button type="submit" class="btn btn-primary" onclick="openPopup()"width: 100%; max-width: 300px; margin: 1rem auto; display: block;">
                     Submit Inquiry
                 </button>
-                <!-- <div class="popup" id="popup">
+                <div class="popup" id="popup">
                     <img src="assets/tick.jpg">
                     <h2>Thank You!</h2>
                     <p>Your details has been successfully submitted.Thanks!</p>
                     <button type="button" onclick="closePopup()">OK</button>
                     </div>
-                </div> -->
-                <!-- <script>
+                </div>
+                <script>
                     let popup=document.getElementById("popup");
                     function openPopup(){
                         popup.classList.add("open-popup");
@@ -939,47 +933,7 @@
                     function closePopup(){
                         popup.classList.remove("open-popup");
                     }
-                </script> -->
-                <script>
-    document.getElementById("contactForm").addEventListener("submit", function(e) {e.preventDefault();
-
-    let name = document.getElementById(" name").value;
-    let company = document.getElementById("company").value;
-    let email = document.getElementById("email").value;
-    let phone = document.getElementById("phone").value;
-    let model = document.getElementById("model").value;
-    let application = document.getElementById(" application").value;
-    let details = document.getElementById("details").value;
-
-    let companyEmail ="admin@avantsteelfab.in"; 
-
-    let subject = " Pricing Inquiry";
-    let body =
-        `Full Name: ${name}%0D%0A` +
-        `Company: ${company}%0D%0A` +
-        `Email: ${email}%0D%0A` +
-        `Phone: ${phone}%0D%0A` +
-        `Interested Model: ${model}%0D%0A` +
-        `Application: ${application}%0D%0A` +
-        `Additional Details: ${details}`;
-    window.location.href = `mailto:${companyEmail}?subject=${subject}&body=${body}`;
-    document.getElementById("contact-form").style.display = "flex";
-    document.getElementById("popup").reset();
-});
-
-// function closePopup() {
-//     document.getElementById("popup").style.display = "none";
-// }
-    let popup=document.getElementById("popup");
-                    function openPopup(){
-                        popup.classList.add("open-popup");
-                    }
-                    function closePopup(){
-                        popup.classList.remove("open-popup");
-                    }
-    </script>
-
-                
+                </script>
 
                 
                 <div id="formMessage" class="form-message"></div>
@@ -1106,46 +1060,6 @@
                 });
             });
         });
-
-        //web3forms code//
-
-        const form = document.getElementById('form');
-        const submitBtn = form.querySelector('button[type="submit"]');
-
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(form);
-    formData.append("access_key", "607fd55d-4816-4045-a9d5-62bf553425c5");
-
-    const originalText = submitBtn.textContent;
-
-    submitBtn.textContent = "Sending...";
-    submitBtn.disabled = true;
-
-    try {
-        const response = await fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            body: formData
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            alert("Success! Your message has been sent.");
-            form.reset();
-        } else {
-            alert("Error: " + data.message);
-        }
-
-    } catch (error) {
-        alert("Something went wrong. Please try again.");
-    } finally {
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-    }
-});
-        
     </script>
 </body>
 </html>
